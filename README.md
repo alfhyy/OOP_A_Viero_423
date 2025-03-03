@@ -1,1 +1,1 @@
-# OOP_A_Viero_423
+# All the sources are placed inside src folder
