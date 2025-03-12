@@ -3,8 +3,8 @@ public class BankAccount {
     String ownerName;
     double balance;
 
-    public BankAccount(String accountName, String ownerName, double balance) {
-        this.accountNumber = accountName;
+    public BankAccount(String accountNumber, String ownerName, double balance) {
+        this.accountNumber = accountNumber;
         this.ownerName = ownerName;
         this.balance = balance;
     }
