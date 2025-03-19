@@ -1,21 +1,27 @@
-import java.util.Scanner;
+public class Student extends User {
 
-public class Student {
-    String studentName = "Viero Alfiandhy Havist";
-    String studentID = "202410370110423";
+    public Student(String name, String studentID) {
+        super(name, studentID);
+    }
 
-    public void login (String name, String password) {
-        if (name.equals(studentName) && password.equals(studentID)) {
+    String studentId = getStudentID();
+    String name = getName();
+
+    @Override
+    public void Login () {
+
+        if (name.equals("UIAUOIUOIOII") && studentId.equals("Test")) {
             System.out.println("Student login successful!");
         } else {
             System.out.println("Login failed! username or password is incorrect!");
         }
     }
 
+    @Override
     public void displayInfo () {
         System.out.println();
         System.out.println("Student Details :");
-        System.out.println("Student Name: " + studentName);
-        System.out.println("Student ID: " + studentID);
+        System.out.println("Student Name: " + name);
+        System.out.println("Student ID: " + studentId);
     }
 }

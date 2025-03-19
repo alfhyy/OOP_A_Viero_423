@@ -7,10 +7,10 @@ public class Hero extends GameCharacter {
     @Override
     public void attack(GameCharacter target) {
 
-        System.out.println(Hero.this.getName() + " attacks " + target.getName() + " using Orbital Strike!");
+        System.out.println(this.getName() + " attacks " + target.getName() + " using Orbital Strike!");
 
-        this.setHealth(this.getHealth() - 20);
-        System.out.println("Viper now has : " + this.getHealth() + " hp");
+        target.setHealth(target.getHealth() - 20);
+        System.out.println(target.getName() + " now has : " + target.getHealth() + " hp");
 
     }
 }

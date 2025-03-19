@@ -1,15 +1,27 @@
-import java.util.Scanner;
+public class Admin extends User {
+    private final String username;
+    private final String password;
 
-public class Admin {
-    String AdminName = "Admin423";
-    String AdminPassword = "Password423";
+    public Admin(String name, String studentID, String username, String password) {
+        super(name, studentID);
+        this.username = username;
+        this.password = password;
+    }
 
-    public void login (String name, String password) {
-
-        if (name.equals(AdminName) && password.equals(AdminPassword)) {
+    @Override
+    public void Login() {
+        if (this.username.equals("Test") && this.password.equals("Testpw")) {
             System.out.println("Admin login successful!");
+            return;
         } else {
-            System.out.println("Login failed! username or password is incorrect!");
+            System.out.println("Login failed! Username or password is incorrect.");
         }
+    }
+
+    @Override
+    public void displayInfo() {
+        System.out.println("Admin Details:");
+        System.out.println("Username: " + username);
+        System.out.println("Status: Successfully logged in as Admin.");
     }
 }

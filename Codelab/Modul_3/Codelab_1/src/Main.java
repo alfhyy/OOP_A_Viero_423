@@ -3,10 +3,14 @@ public class Main {
 
         GameCharacter gameCharacter = new GameCharacter("General Character", 100);
         Hero hero = new Hero("Brimstone", 150);
-        Enemy enemy = new Enemy("Viper", 200);
+        hero.setName("Brimmy");
 
-        GameCharacter hero1 = new Hero("Brimstone", 150);
-        GameCharacter enemy1 = new Enemy("Viper", 200);
+        Enemy enemy = new Enemy("Viper", 200);
+        enemy.setName("Miss Viper");
+
+//        GameCharacter hero1 = new Hero("Brimstone", 150);
+//
+//        GameCharacter enemy1 = new Enemy("Viper", 200);
 
         System.out.println("Initial Status :");
         System.out.println(hero.getName() + " has health: " + hero.getHealth());
