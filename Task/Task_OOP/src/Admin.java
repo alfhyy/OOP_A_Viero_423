@@ -1,6 +1,6 @@
 public class Admin extends User {
-    private final String username;
-    private final String password;
+    String username;
+    String password;
 
     public Admin(String name, String studentID, String username, String password) {
         super(name, studentID);
@@ -9,8 +9,8 @@ public class Admin extends User {
     }
 
     @Override
-    public void Login() {
-        if (this.username.equals("Test") && this.password.equals("Testpw")) {
+    public void login(String inputUsername, String inputPassword) {
+        if (inputUsername.equals(username) && inputPassword.equals(password)) {
             System.out.println("Admin login successful!");
             return;
         } else {
@@ -20,6 +20,7 @@ public class Admin extends User {
 
     @Override
     public void displayInfo() {
+        System.out.println();
         System.out.println("Admin Details:");
         System.out.println("Username: " + username);
         System.out.println("Status: Successfully logged in as Admin.");

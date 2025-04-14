@@ -13,6 +13,6 @@ public class Main {
         //calling the methods to display, deposit and withdraw for 2nd person
         bankAccount2.displayInfo();
         bankAccount2.depositMoney(300000);
-        bankAccount2.withdrawMoney(300000000);
+        bankAccount2.withdrawMoney(300);
     }
 }

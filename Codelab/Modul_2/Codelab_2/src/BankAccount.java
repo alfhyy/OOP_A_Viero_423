@@ -1,8 +1,9 @@
 public class BankAccount {
     //declare necessary variables
-    String accountNumber;
-    String ownerName;
-    double balance;
+    private String accountNumber;
+    private String ownerName;
+    private double balance;
+    private double minimumBalance = 100.0;
 
     //initialized constructor
     public BankAccount(String accountNumber, String ownerName, double balance) {
@@ -30,16 +31,15 @@ public class BankAccount {
     //make withdrawMoney() function to allows user make a withdraw
     public void withdrawMoney(double amount) {
         //condition if user' balance is less than the amount of withdraw
-        if (amount > balance) {
-            System.out.println(ownerName + " just withdraw :" + amount + " Insufficient balance, please try again!");
+        if (balance - amount < minimumBalance) {
+            System.out.println("Withdrawal denied. Minimum balance of " + minimumBalance + " must be maintained.");
             return;
         }
-
-        //reduce the balance from the withdraw amount
         balance -= amount;
-        System.out.println(ownerName + " just withdraw :" + amount + " your balance :" + balance);
+        System.out.println(ownerName + " just withdrew: " + amount + ". New balance: " + balance);
         System.out.println();
     }
-
-
 }
+
+
+

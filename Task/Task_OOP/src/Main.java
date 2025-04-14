@@ -19,8 +19,8 @@ public class Main {
         //consuming any left newline so that the next input won't be interrupted
         input.nextLine();
 
-//        Admin admin = new Admin();
-        Student student = new Student("Test", "pwpwpwpwpwpwpw");
+        Admin admin = new Admin("Vyerow", "110423", "Admin423", "Password423");
+        Student student = new Student("Viero Alfiandhy Havist", "202410370110423");
 
         if (loginType == 1) {
 
@@ -30,7 +30,8 @@ public class Main {
             System.out.print("Enter Admin Password: ");
             String AdminInputPassword = input.nextLine();
 
-//            admin.login(AdminInputName, AdminInputPassword);
+            admin.login(AdminInputName, AdminInputPassword);
+            admin.displayInfo();
 
         //condition if user chose 2
         } else if (loginType == 2) {
@@ -40,7 +41,7 @@ public class Main {
             System.out.print("Enter Student Password: ");
             String StudentInputPassword = input.nextLine();
 
-            student.Login();
+            student.login(StudentInputName, StudentInputPassword);
             student.displayInfo();
 
         //condition if user decided to choose another number between 1 or 2

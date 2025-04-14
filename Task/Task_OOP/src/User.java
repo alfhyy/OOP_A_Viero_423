@@ -23,11 +23,11 @@ public class User {
         return studentID;
     }
 
-    public void Login () {
+    public void login(String a, String b) {
         //override later in subclasses
     }
 
-    public void displayInfo () {
+    public void displayInfo() {
         System.out.println("User Details :");
         System.out.println("Name: " + name);
         System.out.println("Student ID: " + studentID);
