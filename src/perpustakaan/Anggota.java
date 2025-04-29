@@ -10,7 +10,7 @@ public class Anggota implements Peminjaman {
     }
 
     public void displayInfo() {
-        System.out.println("Name: " + name + " (ID: " + memberID + ")");
+        System.out.println("Names: " + name + " (ID: " + memberID + ")");
     }
 
     // Overloaded methods
