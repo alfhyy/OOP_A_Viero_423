@@ -18,7 +18,7 @@ public class Main {
         System.out.println();
 
         viero.borrowBook(vagabond.getTitle());
-        opan.borrowBook(homo.getTitle());
+        opan.borrowBook(homo.getTitle(), 5);
         System.out.println();
 
         viero.returnBook(vagabond);

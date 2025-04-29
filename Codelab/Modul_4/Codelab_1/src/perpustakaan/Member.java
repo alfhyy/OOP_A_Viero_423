@@ -23,7 +23,7 @@ public class Member implements BookLoan{
 
     @Override
     public void borrowBook (Book book) {
-
+        System.out.println(name + " just borrowed : " + book.getTitle());
     }
 
     @Override
