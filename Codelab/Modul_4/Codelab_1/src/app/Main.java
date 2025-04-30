@@ -6,8 +6,8 @@ public class Main {
         Member viero = new Member("Viero Alfiandhy", "A-423");
         Member opan = new Member("Ovan Gosling", "A-506");
 
-        Book vagabond = new Fiction("Takehiko Inoue", "Vagabond");
-        Book homo = new NonFiction("Yuval Noah Harari", "Sapiens: A Brief History of Humankind");
+        Book vagabond = new Fiction("Takehiko Inoue", "Vagabond", "Fiction, History, Action, Drama");
+        Book homo = new NonFiction("Yuval Noah Harari", "Sapiens: A Brief History of Humankind", "Biography");
 
         viero.displayInfo();
         opan.displayInfo();
@@ -17,7 +17,7 @@ public class Main {
         homo.displayInfo();
         System.out.println();
 
-        viero.borrowBook(vagabond.getTitle());
+        viero.borrowBook(vagabond);
         opan.borrowBook(homo.getTitle(), 5);
         System.out.println();
 

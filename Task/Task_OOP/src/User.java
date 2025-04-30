@@ -28,8 +28,8 @@ public class User {
     }
 
     public void displayInfo() {
-        System.out.println("User Details :");
-        System.out.println("Name: " + name);
-        System.out.println("Student ID: " + studentID);
+//        System.out.println("User Details :");
+//        System.out.println("Name: " + name);
+//        System.out.println("Student ID: " + studentID);
     }
 }

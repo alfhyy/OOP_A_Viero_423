@@ -3,10 +3,12 @@ package perpustakaan;
 public abstract class Book {
     protected String title;
     protected String author;
+    protected String genre;
 
-    public Book(String author, String title) {
+    public Book(String author, String title, String genre) {
         this.author = author;
         this.title = title;
+        this.genre = genre;
     }
 
     public String getAuthor() {
@@ -17,6 +19,6 @@ public abstract class Book {
         return title;
     }
 
-    public abstract void displayInfo(); // Abstract method!
+    public abstract void displayInfo(); 
 
 }
