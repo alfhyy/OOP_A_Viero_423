@@ -1,3 +1,5 @@
+package com.praktikum.users;
+
 public class User {
     private String name;
     private String studentID;
@@ -28,8 +30,8 @@ public class User {
     }
 
     public void displayInfo() {
-//        System.out.println("User Details :");
+//        System.out.println("com.perpustakaan.users.User Details :");
 //        System.out.println("Name: " + name);
-//        System.out.println("Student ID: " + studentID);
+//        System.out.println("com.perpustakaan.users.Student ID: " + studentID);
     }
 }

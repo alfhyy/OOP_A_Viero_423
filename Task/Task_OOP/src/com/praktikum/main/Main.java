@@ -1,5 +1,8 @@
 //import scanner class for input
 
+import com.praktikum.users.Admin;
+import com.praktikum.users.Student;
+
 import java.util.Scanner;
 
 public class Main {
@@ -10,8 +13,8 @@ public class Main {
 
         //prompting output for user
         System.out.println("Select login type: ");
-        System.out.println("1. Admin");
-        System.out.println("2. Student");
+        System.out.println("1. com.perpustakaan.users.Admin");
+        System.out.println("2. com.perpustakaan.users.Student");
 
         //make user input choice with integer data type using nextInt()
         System.out.print("Enter your choice: ");
@@ -24,10 +27,10 @@ public class Main {
 
         if (loginType == 1) {
 
-            System.out.print("Enter Admin Username: ");
+            System.out.print("Enter com.perpustakaan.users.Admin Username: ");
             String AdminInputName = input.nextLine();
 
-            System.out.print("Enter Admin Password: ");
+            System.out.print("Enter com.perpustakaan.users.Admin Password: ");
             String AdminInputPassword = input.nextLine();
 
             admin.login(AdminInputName, AdminInputPassword);
@@ -35,10 +38,10 @@ public class Main {
 
             //condition if user chose 2
         } else if (loginType == 2) {
-            System.out.print("Enter Student Username: ");
+            System.out.print("Enter com.perpustakaan.users.Student Username: ");
             String StudentInputName = input.nextLine();
 
-            System.out.print("Enter Student Password: ");
+            System.out.print("Enter com.perpustakaan.users.Student Password: ");
             String StudentInputPassword = input.nextLine();
 
             student.login(StudentInputName, StudentInputPassword);

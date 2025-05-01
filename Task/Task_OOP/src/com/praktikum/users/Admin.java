@@ -1,3 +1,5 @@
+package com.perpustakaan.users;
+
 public class Admin extends User {
     String username;
     String password;
@@ -11,7 +13,7 @@ public class Admin extends User {
     @Override
     public void login(String inputUsername, String inputPassword) {
         if (inputUsername.equals(username) && inputPassword.equals(password)) {
-            System.out.println("Admin login successful!");
+            System.out.println("com.perpustakaan.users.Admin login successful!");
             return;
         } else {
             System.out.println("Login failed! Username or password is incorrect.");
@@ -21,8 +23,8 @@ public class Admin extends User {
     @Override
     public void displayInfo() {
         System.out.println();
-        System.out.println("Admin Details:");
+        System.out.println("com.perpustakaan.users.Admin Details:");
         System.out.println("Username: " + username);
-        System.out.println("Status: Successfully logged in as Admin.");
+        System.out.println("Status: Successfully logged in as com.perpustakaan.users.Admin.");
     }
 }
