@@ -1,7 +1,8 @@
-//import scanner class for input
+package com.praktikum.main;//import scanner class for input
 
 import com.praktikum.users.Admin;
 import com.praktikum.users.Student;
+import com.praktikum.users.User;
 
 import java.util.Scanner;
 
@@ -10,11 +11,12 @@ public class Main {
 
         //declare "input" as scanner variable
         Scanner input = new Scanner(System.in);
+        User user = null;
 
         //prompting output for user
         System.out.println("Select login type: ");
-        System.out.println("1. com.perpustakaan.users.Admin");
-        System.out.println("2. com.perpustakaan.users.Student");
+        System.out.println("1. Admin");
+        System.out.println("2. Student");
 
         //make user input choice with integer data type using nextInt()
         System.out.print("Enter your choice: ");
@@ -22,31 +24,21 @@ public class Main {
         //consuming any left newline so that the next input won't be interrupted
         input.nextLine();
 
-        Admin admin = new Admin("Viero Alfiandhy Havist", "202410370110423", "Admin423", "Password423");
-        Student student = new Student("Viero Alfiandhy Havist", "202410370110423");
-
         if (loginType == 1) {
+            user = new Admin("Viero Alfiandhy Havist", "202410370110423", "Admin423", "Password423");
+            user.login();
 
-            System.out.print("Enter com.perpustakaan.users.Admin Username: ");
-            String AdminInputName = input.nextLine();
-
-            System.out.print("Enter com.perpustakaan.users.Admin Password: ");
-            String AdminInputPassword = input.nextLine();
-
-            admin.login(AdminInputName, AdminInputPassword);
-            admin.displayInfo();
-
+            if (user.isLoggedIn()) {
+                user.displayAppMenu();
+            }
             //condition if user chose 2
         } else if (loginType == 2) {
-            System.out.print("Enter com.perpustakaan.users.Student Username: ");
-            String StudentInputName = input.nextLine();
+            user = new Student("Viero Alfiandhy Havist", "202410370110423");
+            user.login();
 
-            System.out.print("Enter com.perpustakaan.users.Student Password: ");
-            String StudentInputPassword = input.nextLine();
-
-            student.login(StudentInputName, StudentInputPassword);
-            student.displayInfo();
-
+            if (user.isLoggedIn()) {
+                user.displayAppMenu();
+            }
             //condition if user decided to choose another number between 1 or 2
         } else if (loginType == 420) {
             System.out.println("⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕\n" +

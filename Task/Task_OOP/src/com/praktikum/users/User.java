@@ -1,6 +1,6 @@
 package com.praktikum.users;
 
-public class User {
+public abstract class User {
     private String name;
     private String studentID;
 
@@ -25,13 +25,19 @@ public class User {
         return studentID;
     }
 
-    public void login(String a, String b) {
-        //override later in subclasses
+    public abstract void login();
+
+    public boolean loggedIn = false;
+
+    public boolean isLoggedIn() {
+        return loggedIn;
     }
 
+    public abstract void displayAppMenu();
+
     public void displayInfo() {
-//        System.out.println("com.perpustakaan.users.User Details :");
+//        System.out.println("User Details :");
 //        System.out.println("Name: " + name);
-//        System.out.println("com.perpustakaan.users.Student ID: " + studentID);
+//        System.out.println("Student ID: " + studentID);
     }
 }
