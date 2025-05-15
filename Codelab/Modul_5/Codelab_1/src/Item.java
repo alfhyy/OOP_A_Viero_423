@@ -42,16 +42,25 @@ public class Item {
     }
 
     public static Item addItem(Scanner input) {
+
+        int stock = 0;
         System.out.print("Enter new item: ");
         input.nextLine();
         String name = input.nextLine();
 
-        System.out.print("Enter new stock: ");
-        int stock = input.nextInt();
+        try {
+            System.out.print("Enter new stock: ");
+            stock = input.nextInt();
 
-        System.out.println("Item " + ANSI_MAGENTA + name + ANSI_RESET + " added to stock ");
-        System.out.println();
+            System.out.println("Item " + ANSI_MAGENTA + name + ANSI_RESET + " added to stock ");
+            System.out.println();
+        } catch (InputMismatchException e) {
+            System.out.println("Error: Please enter a valid value for stock" + e.getMessage());
+            input.nextLine();
+            return null;
+        }
         return new Item(name, stock);
+
     }
 
     public static void reduceItem(Scanner input, ArrayList<Item> itemsList) {
@@ -67,7 +76,6 @@ public class Item {
             System.out.println(index + ". " + item);
             index++;
         }
-
 
         try {
             System.out.print("Select an item to reduce: ");

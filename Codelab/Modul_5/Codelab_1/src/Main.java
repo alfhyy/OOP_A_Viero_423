@@ -47,7 +47,7 @@ public class Main {
                     Item.reduceItem(scanner, itemList);
                     break;
                 case 0:
-                    System.out.println("Goodbye!");
+                    System.out.println("Goodbye! Thank you for using this program.");
                     System.exit(0);
                     break;
                 default:
