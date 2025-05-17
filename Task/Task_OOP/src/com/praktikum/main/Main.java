@@ -1,8 +1,10 @@
 package com.praktikum.main;//import scanner class for input
 
+import com.praktikum.exceptions.InvalidCredentialsException;
 import com.praktikum.users.Admin;
 import com.praktikum.users.Student;
 import com.praktikum.users.User;
+import com.praktikum.storage.GlobalData;
 
 import java.util.Scanner;
 
@@ -12,6 +14,9 @@ public class Main {
         //declare "input" as scanner variable
         Scanner input = new Scanner(System.in);
         User user = null;
+
+        GlobalData.userList.add(new Admin("Viero Alfiandhy Havist", "202410370110423", "Admin423", "Password423"));
+        GlobalData.userList.add(new Student("Sakuragi Hanamichi", "202410370110023"));
 
         //prompting output for user
         System.out.println("Select login type: ");
@@ -25,21 +30,30 @@ public class Main {
         input.nextLine();
 
         if (loginType == 1) {
-            user = new Admin("Viero Alfiandhy Havist", "202410370110423", "Admin423", "Password423");
-            user.login();
-
-            if (user.isLoggedIn()) {
-                user.displayAppMenu();
+            for (User u : GlobalData.userList) {
+                if (u instanceof Admin) {
+                    try {
+                        u.login();
+                        u.displayAppMenu();
+                        break;
+                    } catch (InvalidCredentialsException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
             }
             //condition if user chose 2
         } else if (loginType == 2) {
-            user = new Student("Viero Alfiandhy Havist", "202410370110423");
-            user.login();
-
-            if (user.isLoggedIn()) {
-                user.displayAppMenu();
+            for (User u : GlobalData.userList) {
+                if (u instanceof Student) {
+                    try {
+                        u.login();
+                        u.displayAppMenu();
+                        break;
+                    } catch (InvalidCredentialsException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
             }
-            //condition if user decided to choose another number between 1 or 2
         } else if (loginType == 420) {
             System.out.println("⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕\n" +
                     "⢐⢕⢕⢕⢕⢕⣕⢕⢕⠕⠁⢕⢕⢕⢕⢕⢕⢕⢕⠅⡄⢕⢕⢕⢕⢕⢕⢕⢕⢕\n" +
@@ -56,7 +70,6 @@ public class Main {
                     "⣆⢕⠄⢱⣄⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢁⢕⢕⠕⢁\n" +
                     "⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿");
         } else {
-            //prompting output
             System.out.println("Invalid Input, please try again!");
         }
     }

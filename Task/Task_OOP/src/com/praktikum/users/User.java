@@ -10,7 +10,7 @@ public abstract class User {
     }
 
     public void setName(String name) {
-        this.name = "Viero Alfiandhy Havist";
+        this.name = name;
     }
 
     public String getName() {
@@ -18,7 +18,7 @@ public abstract class User {
     }
 
     public void setStudentID(String studentID) {
-        this.studentID = "202410370110423";
+        this.studentID = studentID;
     }
 
     public String getStudentID() {

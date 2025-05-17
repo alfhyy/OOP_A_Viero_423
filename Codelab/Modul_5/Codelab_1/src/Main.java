@@ -6,11 +6,11 @@ public class Main {
         ArrayList<Item> itemList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
-//        Item item1 = new Item("Neon Genesis Evangelion (Collector Edition)", 4);
-//        Item item2 = new Item("Slam Dunk (New Paper)", 30);
-//
-//        itemList.add(item1);
-//        itemList.add(item2);
+        Item item1 = new Item("Neon Genesis Evangelion (Collector Edition)", 4);
+        Item item2 = new Item("Slam Dunk (New Paper)", 30);
+
+        itemList.add(item1);
+        itemList.add(item2);
 
         int choice;
         do {
