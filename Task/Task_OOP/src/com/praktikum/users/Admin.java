@@ -6,6 +6,7 @@ import com.praktikum.models.ItemStatus;
 import com.praktikum.storage.GlobalData;
 import com.praktikum.models.Item;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Admin extends User implements AdminActions {
@@ -66,7 +67,7 @@ public class Admin extends User implements AdminActions {
 
     @Override
     public void displayAppMenu() {
-        int inputChoice;
+        int inputChoice = -1;
         do {
             System.out.println("Admin Menu :");
             System.out.println("1. Manage Item Reports");
@@ -74,20 +75,29 @@ public class Admin extends User implements AdminActions {
             System.out.println("0. Logout");
 
             System.out.print("Enter your choice: ");
-            inputChoice = input.nextInt();
+            try {
+                if (!input.hasNextInt()) {
+                    throw new InputMismatchException("Invalid input type! Please enter a number (e.g., 1 or 2).");
+                }
+                inputChoice = input.nextInt();
+                input.nextLine();
 
-            switch (inputChoice) {
-                case 1:
-                    manageItems();
-                    break;
-                case 2:
-                    manageUsers();
-                    break;
-                case 0:
-                    System.out.println("Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid choice! Try again.");
+                switch (inputChoice) {
+                    case 1:
+                        manageItems();
+                        break;
+                    case 2:
+                        manageUsers();
+                        break;
+                    case 0:
+                        System.out.println("Goodbye!");
+                        break;
+                    default:
+                        System.out.println("Invalid choice! Try again.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Error: " + e.getMessage());
+                input.nextLine();
             }
         } while (inputChoice != 0);
     }
@@ -99,77 +109,93 @@ public class Admin extends User implements AdminActions {
         System.out.println("2. Mark as Reported");
 
         System.out.print("Enter your choice: ");
-        int inputChoice = input.nextInt();
-
-        if (inputChoice == 1) {
-            if (GlobalData.userList.isEmpty()) {
-                System.out.println("There are no reports yet!");
-                System.out.println();
-                return;
+        try {
+            if (!input.hasNextInt()) {
+                throw new InputMismatchException("Invalid input type! Please enter a number (e.g., 1 or 2).");
             }
 
-            System.out.println("All Reports: ");
-            int index = 1;
-            for (Item i : GlobalData.reportedItem) {
-                System.out.println("--------------------");
-                System.out.println(index + ". " + i.getName());
-                System.out.println(i.getStatus());
-                System.out.println("--------------------");
-                index++;
-            }
-        } else if (inputChoice == 2) {
-            if (GlobalData.reportedItem.isEmpty()) {
-                System.out.println("No reported items found!");
-                System.out.println();
-                return;
-            }
+            int inputChoice = input.nextInt();
 
-            System.out.println("Mark as Reported: ");
-            int index = 1;
-            for (Item i : GlobalData.reportedItem) {
-                System.out.println("--------------------");
-                System.out.println(index + ". " + i.getName());
-                System.out.println(i.getStatus());
-                System.out.println("--------------------");
-                index++;
+            if (inputChoice == 1) {
+                if (GlobalData.reportedItem.isEmpty()) {
+                    System.out.println("There are no reports yet!");
+                    System.out.println();
+                    return;
+                }
 
-                System.out.print("Select item to Mark as Reported: ");
+                System.out.println("All Reports: ");
+                int index = 1;
+                for (Item i : GlobalData.reportedItem) {
+                    System.out.println("--------------------");
+                    System.out.println(index + ". " + i.getName());
+                    System.out.println(i.getStatus());
+                    System.out.println("--------------------");
+                    index++;
+                }
+            } else if (inputChoice == 2) {
+                if (GlobalData.reportedItem.isEmpty()) {
+                    System.out.println("No reported items found!");
+                    System.out.println();
+                    return;
+                }
 
-                try {
+                System.out.println("Mark as Reported: ");
+                int index = 1;
+                for (Item i : GlobalData.reportedItem) {
+                    System.out.println("--------------------");
+                    System.out.println(index + ". " + i.getName());
+                    System.out.println(i.getStatus());
+                    System.out.println("--------------------");
+                    index++;
 
-                    int reportInput = input.nextInt();
-                    input.nextLine();
+                    System.out.print("Select item to Mark as Reported: ");
 
-                    if (reportInput < 1 || reportInput > GlobalData.reportedItem.size()) {
-                        throw new IndexOutOfBoundsException("Invalid selection, please try again!");
+                    try {
+
+                        if (!input.hasNextInt()) {
+                            throw new InputMismatchException("Invalid input type! Please enter a number!");
+                        }
+
+                        int reportInput = input.nextInt();
+                        input.nextLine();
+
+                        if (reportInput < 1 || reportInput > GlobalData.reportedItem.size()) {
+                            throw new IndexOutOfBoundsException("Invalid selection, please try again!");
+                        }
+
+                        System.out.println("Choose new status: ");
+                        System.out.println("1. Found");
+                        System.out.println("2. Claimed");
+                        System.out.print("Enter your choice: ");
+                        inputChoice = input.nextInt();
+
+                        Item selectedItem = GlobalData.reportedItem.get(reportInput - 1);
+                        switch (inputChoice) {
+                            case 1:
+                                selectedItem.setStatus(ItemStatus.found);
+                                System.out.println("Status: Marked as Found");
+                                break;
+                            case 2:
+                                selectedItem.setStatus(ItemStatus.claimed);
+                                System.out.println("Status: Claimed");
+                                break;
+                            default:
+                                System.out.println("Invalid choice! Try again.");
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println(e.getMessage());
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
+                        input.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Invalid input. Please try again!");
+                        input.nextLine();
                     }
-
-                    System.out.println("Choose new status: ");
-                    System.out.println("1. Found");
-                    System.out.println("2. Claimed");
-                    System.out.print("Enter your choice: ");
-                    inputChoice = input.nextInt();
-
-                    Item selectedItem = GlobalData.reportedItem.get(reportInput - 1);
-                    switch (inputChoice) {
-                        case 1:
-                            selectedItem.setStatus(ItemStatus.found);
-                            System.out.println("Status: Marked as Found");
-                            break;
-                        case 2:
-                            selectedItem.setStatus(ItemStatus.claimed);
-                            System.out.println("Status: Claimed");
-                            break;
-                        default:
-                            System.out.println("Invalid choice! Try again.");
-                    }
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println(e.getMessage());
-                } catch (Exception e) {
-                    System.out.println("Invalid input. Please try again!");
-                    input.nextLine();
                 }
             }
+        } catch (InputMismatchException e) {
+            System.out.println("Error: " + e.getMessage());
+            input.nextLine();
         }
     }
 
