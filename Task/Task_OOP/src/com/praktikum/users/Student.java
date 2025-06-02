@@ -13,6 +13,14 @@ public class Student extends User implements MahasiswaActions {
         super(name, studentID);
     }
 
+    public String getName() {
+        return super.getName();
+    }
+
+    public String getStudentID() {
+        return super.getStudentID();
+    }
+
     Scanner input = new Scanner(System.in);
 
     @Override

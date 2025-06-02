@@ -10,8 +10,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Admin extends User implements AdminActions {
-    String username;
-    String password;
+    public String username;
+    public String password;
 
     Scanner input = new Scanner(System.in);
 
